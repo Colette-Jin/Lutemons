@@ -8,9 +8,18 @@ public class Home implements Create {
     }
 
     @Override
-    public Lutemon Create_lutemon(String color) {
-        switch(color){
-            case "White":Lutemon lutemon = WhiteLutemon();
+    public Lutemon Create_lutemon(String color, String name) {
+        switch (color) {
+            case "white":
+                Lutemon lutemon = Whitemon(String color, String name);
+            case "green":
+                Lutemon lutemon = Greenmon(String color, String name);
+            case "pink":
+                Lutemon lutemon = Pinkmon(String color, String name);
+            case "orange":
+                Lutemon lutemon = Orangemon(String color, String name);
+            case "black":
+                Lutemon lutemon = Blackmon(String color, String name);
         }
         storage.addLutemon(lutemon);
         return lutemon;

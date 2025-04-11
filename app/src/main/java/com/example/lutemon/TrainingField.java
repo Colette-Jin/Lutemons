@@ -9,6 +9,11 @@ public class TrainingField implements Train{
 
     @Override
     public void train(Lutemon lutemon) {
-        // Training logic here
+        lutemon.addExperience(1);
+    }
+
+    public void moveToHome(Lutemon lutemon, Home home) {
+        lutemon.resetHealthToDefault();//when returnong home the lutmons health is set back to the default health
+        storage.moveLutemon(lutemon, home);
     }
 }
