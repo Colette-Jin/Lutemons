@@ -1,5 +1,12 @@
 package com.example.lutemon;
 
+import com.example.lutemon.mons.Blackmon;
+import com.example.lutemon.mons.Greenmon;
+import com.example.lutemon.mons.Lutemon;
+import com.example.lutemon.mons.Orangemon;
+import com.example.lutemon.mons.Pinkmon;
+import com.example.lutemon.mons.Whitemon;
+
 public class Home implements Create {
     private Storage storage;
 
@@ -11,15 +18,15 @@ public class Home implements Create {
     public Lutemon Create_lutemon(String color, String name) {
         switch (color) {
             case "white":
-                Lutemon lutemon = Whitemon(String color, String name);
+                Lutemon lutemon = new Whitemon(String color, String name);
             case "green":
-                Lutemon lutemon = Greenmon(String color, String name);
+                Lutemon lutemon = new Greenmon(String color, String name);
             case "pink":
-                Lutemon lutemon = Pinkmon(String color, String name);
+                Lutemon lutemon = new Pinkmon(String color, String name);
             case "orange":
-                Lutemon lutemon = Orangemon(String color, String name);
+                Lutemon lutemon = new Orangemon(String color, String name);
             case "black":
-                Lutemon lutemon = Blackmon(String color, String name);
+                Lutemon lutemon = new Blackmon(String color, String name);
         }
         storage.addLutemon(lutemon);
         return lutemon;

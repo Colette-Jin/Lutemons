@@ -1,5 +1,7 @@
 package com.example.lutemon;
 
+import com.example.lutemon.mons.Lutemon;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

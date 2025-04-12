@@ -1,4 +1,4 @@
-package com.example.lutemon;
+package com.example.lutemon.mons;
 
 public class Whitemon extends Lutemon{
     public Whitemon(String name, String color, int attack, int defence, int health, int maxHealth, int id,int experience){

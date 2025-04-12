@@ -1,4 +1,4 @@
-package com.example.lutemon;
+package com.example.lutemon.mons;
 
 public abstract class Lutemon {
     protected String name;
@@ -79,9 +79,9 @@ public abstract class Lutemon {
     }
 
     public void addExperience(int additionalExperiencePoints){
-        this experice+=additionalExperiencePoints;
+        this.experice+=additionalExperiencePoints;
 
         // When experience increases, attack power also increases
-        this attack+=additionalExperiencePoints;
+        this.attack+=additionalExperiencePoints;
     }
 }
