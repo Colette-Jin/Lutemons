@@ -15,8 +15,8 @@ public class TrainingField implements Train {
         lutemon.addExperience(1);
     }
 
-    public void moveToHome(Lutemon lutemon, Home home) {
-        lutemon.resetHealthToDefault();//when returnong home the lutmons health is set back to the default health
-        storage.moveLutemon(lutemon, home);
+    public void moveToHome(Lutemon lutemon) {
+        lutemon.resetHealthToDefault();//when returning home the lutemons health is set back to the default health
+        storage.moveLutemon(lutemon, "home");
     }
 }

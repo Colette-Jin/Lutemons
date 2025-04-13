@@ -4,15 +4,15 @@ import com.example.lutemon.container.Storage;
 import com.example.lutemon.mons.Lutemon;
 
 public class BattleField implements Battle {
-    private Storage storage;
+    private final Storage storage;
 
-    public void BattleFieldeld() {
+    public BattleField() {
         this.storage = Storage.getInstance();
     }
 
     public void moveToHome(Lutemon lutemon) {
-        lutemon.resetHealthToDefault();//when returning home the lutmons health is set back to the default health
-        storage.moveLutemon(Lutemon lutemon,Home home);
+        lutemon.resetHealthToDefault();//when returning home the lutemon's health is set back to the default health
+        storage.moveLutemon(lutemon,"Home");
     }
 
 
