@@ -1,6 +1,9 @@
-package com.example.lutemon;
+package com.example.lutemon.container;
 
-public class TrainingField implements Train{
+import com.example.lutemon.Train;
+import com.example.lutemon.mons.Lutemon;
+
+public class TrainingField implements Train {
     private Storage storage;
 
     public void TrainingFieldeld() {

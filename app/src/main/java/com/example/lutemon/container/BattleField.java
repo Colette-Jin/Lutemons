@@ -1,6 +1,9 @@
-package com.example.lutemon;
+package com.example.lutemon.container;
 
-public class BattleField implements Battle{
+import com.example.lutemon.Battle;
+import com.example.lutemon.mons.Lutemon;
+
+public class BattleField implements Battle {
     private Storage storage;
 
     public void BattleFieldeld() {
