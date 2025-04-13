@@ -51,29 +51,28 @@ public abstract class Lutemon {
         return idCount;
     }
 
-    public void resetHealthToDefault(){
-        switch(color){
-            case "white":this.health=20;
-            case "green":this.health=19;
-            case "pink":this.health=18;
-            case "orange":this.health=17;
-            case "black":this.health=16;
-        }
-    }
+    public abstract void resetHealthToDefault();
+//        switch(color){
+//            case "white":this.health=20;
+//            case "green":this.health=19;
+//            case "pink":this.health=18;
+//            case "orange":this.health=17;
+//            case "black":this.health=16;
+//        }
 
-    public void resetAllParametersToDefault(){
-        switch(color){
-            case "white":this.health=20;this.attack=5;this.defence=4;this.experience=0;
-            case "green":this.health=19;this.attack=6;this.defence=3;this.experience=0;
-            case "pink":this.health=18;this.attack=7;this.defence=2;this.experience=0;
-            case "orange":this.health=17;this.attack=8;this.defence=1;this.experience=0;
-            case "black":this.health=16;this.attack=9;this.defence=0;this.experience=0;
-        }
-    }
+
+    public abstract void resetAllParametersToDefault();
+//        switch(color){
+//            case "white":this.health=20;this.attack=5;this.defence=4;this.experience=0;
+//            case "green":this.health=19;this.attack=6;this.defence=3;this.experience=0;
+//            case "pink":this.health=18;this.attack=7;this.defence=2;this.experience=0;
+//            case "orange":this.health=17;this.attack=8;this.defence=1;this.experience=0;
+//            case "black":this.health=16;this.attack=9;this.defence=0;this.experience=0;
 
     public void defense(int attack){
         health = health-attack;
     }
+
     public void attack(Lutemon lutemon){
         int current_attack = attack;
         lutemon.defense(current_attack);
