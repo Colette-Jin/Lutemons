@@ -42,6 +42,7 @@ public abstract class Lutemon {
     }
 
     public int getHealth() { return health; }
+    public int getExperience(){return experience;}
 
     public String getColor() {
         return color;
@@ -83,5 +84,13 @@ public abstract class Lutemon {
 
         // When experience increases, attack power also increases
         this.attack+=additionalExperiencePoints;
+    }
+    public String getDetails(){
+        int atk = this.getAttack();
+        int def = this.getDefence();
+        int health = this.getHealth();
+        int maxhealth = this.getMaxHealth();
+        int exp = this.getExperience();
+        return "ATK: "+atk+" DEF: "+def+" HP: "+health+"/"+maxhealth+" EXP: "+exp;
     }
 }
