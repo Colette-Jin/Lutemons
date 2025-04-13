@@ -1,6 +1,6 @@
-package com.example.lutemon.container;
+package com.example.lutemon;
 
-import com.example.lutemon.Create;
+import com.example.lutemon.container.Storage;
 import com.example.lutemon.mons.Blackmon;
 import com.example.lutemon.mons.Greenmon;
 import com.example.lutemon.mons.Lutemon;
