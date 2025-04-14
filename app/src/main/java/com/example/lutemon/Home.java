@@ -17,28 +17,26 @@ public class Home implements Create {
 
     @Override
     public Lutemon Create_lutemon(String color, String name) {
-        Lutemon lutemon = new Lutemon() {
-            @Override
-            public void resetHealthToDefault() {
+        Lutemon lutemon;
 
-            }
-
-            @Override
-            public void resetAllParametersToDefault() {
-
-            }
-        }
-        switch (color) {
+        switch (color.toLowerCase()) {
             case "white":
-                Lutemon lutemon = new Whitemon(String color, String name);
+                lutemon = new Whitemon(name);
+                break;
             case "green":
-                Lutemon lutemon = new Greenmon(String color, String name);
+                lutemon = new Greenmon(name);
+                break;
             case "pink":
-                Lutemon lutemon = new Pinkmon(String color, String name);
+                lutemon = new Pinkmon(name);
+                break;
             case "orange":
-                Lutemon lutemon = new Orangemon(String color, String name);
+                lutemon = new Orangemon(name);
+                break;
             case "black":
-                Lutemon lutemon = new Blackmon(String color, String name);
+                lutemon = new Blackmon(name);
+                break;
+            default:
+                throw new IllegalStateException("Unknown color: "+color);
         }
         storage.addLutemon(lutemon);
         return lutemon;
