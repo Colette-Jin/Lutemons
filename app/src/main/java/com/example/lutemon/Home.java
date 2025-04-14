@@ -17,6 +17,17 @@ public class Home implements Create {
 
     @Override
     public Lutemon Create_lutemon(String color, String name) {
+        Lutemon lutemon = new Lutemon() {
+            @Override
+            public void resetHealthToDefault() {
+
+            }
+
+            @Override
+            public void resetAllParametersToDefault() {
+
+            }
+        }
         switch (color) {
             case "white":
                 Lutemon lutemon = new Whitemon(String color, String name);
