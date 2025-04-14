@@ -11,15 +11,14 @@ public abstract class Lutemon {
     protected int experience;
     static int idCount;
 
-    public Lutemon(String name,String color,int attack,int defence,int health,int maxHealth,int id,int experience){
+    public Lutemon(String name,String color,int attack,int defence,int maxHealth){
         this.name = name;
         this.color = color;
         this.attack = attack;
         this.defence = defence;
-        this.health = health;
         this.maxHealth = maxHealth;
-        this.id = id;
-        this.experience = experience;
+        this.id = ++idCount;
+        this.experience = 0;
     }
 
     public String getName(){
