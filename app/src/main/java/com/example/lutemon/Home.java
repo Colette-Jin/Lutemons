@@ -42,11 +42,11 @@ public class Home implements Create {
         return lutemon;
     }
 
-    public void moveToTrainArea(Lutemon lutemon, String trainArea) {
+    public void moveToTrainArea(Lutemon lutemon) {
         storage.moveLutemon(lutemon, "trainArea");
     }
 
-    public void moveToBattleField(Lutemon lutemon, String battleField) {
+    public void moveToBattleField(Lutemon lutemon) {
         storage.moveLutemon(lutemon, "battleField");
     }
 }

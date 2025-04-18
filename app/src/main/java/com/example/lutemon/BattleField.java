@@ -8,11 +8,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lutemon.Adapters.storageAdapter;
+import com.example.lutemon.Adapters.LutemonAdapter;
 import com.example.lutemon.container.Storage;
 import com.example.lutemon.mons.Lutemon;
 
@@ -24,7 +23,7 @@ public class BattleField extends AppCompatActivity implements Battle {
     int turn;
     private RecyclerView recyclerArena;
     private TextView battle_detail;
-    private storageAdapter adapter;
+    private LutemonAdapter adapter;
     private List<Lutemon> lutemons_in_arena;
     private Lutemon lutemon1;
     private Lutemon lutemon2;
@@ -55,9 +54,9 @@ public class BattleField extends AppCompatActivity implements Battle {
     }
 
     private void setupRecyclerView() {
-        adapter = new storageAdapter(new ArrayList<>(),this);
+        adapter = new LutemonAdapter(new ArrayList<>());
         recyclerArena.setAdapter(adapter);
-        adapter.updateItems(lutemons_in_arena);
+        adapter.updateList(lutemons_in_arena);
     }
 
     private void setupButtonListeners() {
@@ -70,7 +69,7 @@ public class BattleField extends AppCompatActivity implements Battle {
             turn = 1;
             battle_detail.setText("");//initialize battle log
             next_turn.setEnabled(true);
-            adapter.updateItems(lutemons_in_arena);
+            adapter.updateList(lutemons_in_arena);
         });
 
         next_turn.setOnClickListener(v -> {
@@ -119,7 +118,7 @@ public class BattleField extends AppCompatActivity implements Battle {
         //B.getName()+" has "+ B.getHealth()+" healthpoints"
         battle_detail.append(attacker.getName() + " attacks " + defender.getName() + "\n");
         battle_detail.append(defender.getName() + " has " + defender.getHealth() + " HP left.\n\n");
-        adapter.updateItems(lutemons_in_arena);//update data after each attack
+        adapter.updateList(lutemons_in_arena);//update data after each attack
 
         if (defender.getHealth() <= 0) {
             //System.out.println(defender.getName()+" died. \n"+attacker.getName()+" wins.");
@@ -132,6 +131,8 @@ public class BattleField extends AppCompatActivity implements Battle {
             //return defender home with its stats put back to the default
             defender.resetAllParametersToDefault();
             this.moveToHome(defender);
+            finish();
+            return;
         }else{
             //System.out.println(defender.getName()+"managed to escape death.");
             battle_detail.append(defender.getName()+"managed to escape death.\n");

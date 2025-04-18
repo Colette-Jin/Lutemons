@@ -61,9 +61,12 @@
         android:id="@+id/turn_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="76dp"
         android:text="Next Turn"
-        tools:layout_editor_absoluteX="333dp"
-        tools:layout_editor_absoluteY="652dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <!--display data of lutemons fighting

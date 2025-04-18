@@ -84,7 +84,8 @@ public abstract class Lutemon {
         this.experience+=additionalExperiencePoints;
 
         // When experience increases, attack power also increases
-        this.attack+=additionalExperiencePoints;
+        //already implement in attack()
+        //this.attack+=additionalExperiencePoints;
     }
     public String getDetails(){
         int atk = this.getAttack();

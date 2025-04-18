@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateLutemonActivity"></activity>
+        <activity android:name=".TrainingField" />
+        <activity android:name=".BattleField" />
+        <activity android:name=".CreateLutemonActivity"/>
     </application>
 
 </manifest>
