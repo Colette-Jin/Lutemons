@@ -76,7 +76,7 @@ public class storageAdapter extends RecyclerView.Adapter<storageAdapter.ViewHold
             monname = itemView.findViewById(R.id.name);
             color = itemView.findViewById(R.id.color);
             detail = itemView.findViewById(R.id.details);
-            checkBox = itemView.findViewById(R.id.checkBox);
+            checkBox = itemView.findViewById(R.id.checkbox);
         }
     }
 }

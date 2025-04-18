@@ -1,22 +1,46 @@
 package com.example.lutemon;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Log;
-import android.widget.ImageView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.activity.EdgeToEdge;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lutemon.Adapters.LutemonAdapter;
+import com.example.lutemon.container.Storage;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/ditto";
+
+    private RecyclerView recyclerView;
+    private LutemonAdapter adapter;
+    private Storage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.home);
 
+        storage = Storage.getInstance();
+
+        recyclerView = findViewById(R.id.home_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new com.example.lutemon.Adapters.LutemonAdapter(new ArrayList<>(storage.getLutemons()));
+        recyclerView.setAdapter(adapter);
+
+        Button createBtn = findViewById(R.id.create_btn);
+        createBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CreateLutemonActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    // for returning from CreateLutemonActivity
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.updateList(new ArrayList<>(storage.getLutemons()));
     }
 }
