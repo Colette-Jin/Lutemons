@@ -7,11 +7,14 @@ public class Pinkmon extends Lutemon{
 
     @Override
     public void resetHealthToDefault() {
-        this.health = 18;
+        this.health = maxHealth;
     }
 
     @Override
     public void resetAllParametersToDefault() {
-        this.health=18;this.attack=7;this.defence=2;this.experience=0;
+        this.health=maxHealth;
+        this.attack=7;
+        this.defence=2;
+        this.experience=0;
     }
 }
