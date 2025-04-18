@@ -9,7 +9,6 @@
     <!--give option to choose color and give name
      show create button that returns user back to home (and displays new lutemon there) -->
 
-    <!-- Lutemon Name -->
     <EditText
         android:id="@+id/name_input"
         android:layout_width="0dp"
@@ -21,7 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp"/>
 
-    <!-- Color Selection -->
     <RadioGroup
         android:id="@+id/color_group"
         android:layout_width="0dp"
@@ -60,7 +58,6 @@
             android:text="Orange" />
     </RadioGroup>
 
-    <!-- Create Button -->
     <Button
         android:id="@+id/create_button"
         android:layout_width="wrap_content"
