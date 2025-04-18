@@ -34,7 +34,7 @@ public class Storage {
         return lutemonMap.get(lutemon.getId());
     }
 
-    public List<Lutemon> listLutemons() {
+    public List<Lutemon> getLutemons() {
         return new ArrayList<>(lutemonMap.values());
     }// arraylist of lutemons
 
