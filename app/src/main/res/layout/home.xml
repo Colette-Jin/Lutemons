@@ -12,11 +12,6 @@
         show button to go to training
         show button to go to battle-->
 
-    <!-- Header -->
-
-    <!-- Optional Image Banner -->
-
-    <!-- RecyclerView for Lutemon list -->
 
     <TextView
         android:id="@+id/header"
@@ -31,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Create Button -->
 
     <ImageView
         android:id="@+id/imageView"
@@ -68,7 +62,7 @@
         app:layout_constraintEnd_toStartOf="@+id/train_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Train Button -->
+
     <Button
         android:id="@+id/train_btn"
         android:layout_width="0dp"
@@ -79,7 +73,7 @@
         app:layout_constraintEnd_toStartOf="@+id/battle_btn"
         app:layout_constraintStart_toEndOf="@id/create_btn" />
 
-    <!-- Battle Button -->
+
     <Button
         android:id="@+id/battle_btn"
         android:layout_width="0dp"

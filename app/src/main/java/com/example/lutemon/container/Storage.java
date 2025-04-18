@@ -31,7 +31,7 @@ public class Storage {
 //        return lutemonMap.keySet();
 //    }
 
-    public List<Lutemon> listLutemons() {
+    public List<Lutemon> getLutemons() {
         return new ArrayList<>(lutemonMap.keySet());
     }// arraylist of lutemons
 
