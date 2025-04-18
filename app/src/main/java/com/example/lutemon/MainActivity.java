@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new com.example.lutemon.Adapters.LutemonAdapter(new ArrayList<>(storage.getLutemons()));
         recyclerView.setAdapter(adapter);
 
-        Button createBtn = findViewById(R.id.create_btn);
-        createBtn.setOnClickListener(v -> {
+        Button create_btn = findViewById(R.id.create_btn);
+        create_btn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CreateLutemonActivity.class);
             startActivity(intent);
         });

@@ -25,10 +25,14 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameText;
+        public TextView colorText;
+        public TextView details;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.name);
+            colorText = itemView.findViewById(R.id.color);
+            details = itemView.findViewById(R.id.details);
         }
     }
 
@@ -42,7 +46,9 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Lutemon lutemon = lutemons.get(position);
-        holder.nameText.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
+        holder.nameText.setText(lutemon.getName());
+        holder.colorText.setText(lutemon.getColor());
+        holder.details.setText("Attack: "+lutemon.getAttack()+", Defense: "+lutemon.getDefence()+", XP: "+lutemon.getExperience());
     }
 
     @Override
