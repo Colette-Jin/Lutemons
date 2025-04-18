@@ -20,7 +20,7 @@ import java.util.List;
 
 public class BattleField extends AppCompatActivity implements Battle {
     private final Storage storage;
-    int turn;
+    int turn=1;
     private RecyclerView recyclerArena;
     private TextView battle_detail;
     private LutemonAdapter adapter;
@@ -49,6 +49,7 @@ public class BattleField extends AppCompatActivity implements Battle {
         }
         lutemon1 = lutemons_in_arena.get(0);
         lutemon2 = lutemons_in_arena.get(1);
+        battle_detail.setText("");//initialize battle log
         setupButtonListeners();
         setupRecyclerView();
     }
@@ -66,9 +67,9 @@ public class BattleField extends AppCompatActivity implements Battle {
 
         start_b.setOnClickListener(v -> {
             Toast.makeText(this, "Show time!", Toast.LENGTH_SHORT).show();
-            turn = 1;
-            battle_detail.setText("");//initialize battle log
+            fight();
             next_turn.setEnabled(true);
+            start_b.setEnabled(false);
             adapter.updateList(lutemons_in_arena);
         });
 
@@ -100,43 +101,43 @@ public class BattleField extends AppCompatActivity implements Battle {
         if (lutemon1.getHealth() <= 0 || lutemon2.getHealth() <= 0) {
             next_turn.setEnabled(false);
             battle_detail.append("Battle is over.\n");
-            return;
         }
+        else {
 
 //        while (true) {
-        if (turn % 2 != 0) {//if the turn is odd A attacks
-            attacker = lutemon1;
-            defender = lutemon2;
-        } else {//if the turn is even B attacks
-            attacker = lutemon2;
-            defender = lutemon1;
-        }
-        //Randomness in battles:Lutemon.attack
-        attacker.attack(defender);//attacker attacks and defender defends
-        // print lutemons stats here ?? How if not in the terminal? I dont know how else to print...
-        //A.getName()+" has "+ A.getHealth()+" healthpoints"
-        //B.getName()+" has "+ B.getHealth()+" healthpoints"
-        battle_detail.append(attacker.getName() + " attacks " + defender.getName() + "\n");
-        battle_detail.append(defender.getName() + " has " + defender.getHealth() + " HP left.\n\n");
-        adapter.updateList(lutemons_in_arena);//update data after each attack
+            if (turn % 2 != 0) {//if the turn is odd A attacks
+                attacker = lutemon1;
+                defender = lutemon2;
+            } else {//if the turn is even B attacks
+                attacker = lutemon2;
+                defender = lutemon1;
+            }
+            //Randomness in battles:Lutemon.attack
+            attacker.attack(defender);//attacker attacks and defender defends
+            // print lutemons stats here ?? How if not in the terminal? I dont know how else to print...
+            //A.getName()+" has "+ A.getHealth()+" healthpoints"
+            //B.getName()+" has "+ B.getHealth()+" healthpoints"
+            battle_detail.append(attacker.getName() + " attacks " + defender.getName() + "\n");
+            battle_detail.append(defender.getName() + " has " + defender.getHealth() + " HP left.\n");
+            adapter.updateList(lutemons_in_arena);//update data after each attack
 
-        if (defender.getHealth() <= 0) {
-            //System.out.println(defender.getName()+" died. \n"+attacker.getName()+" wins.");
-            battle_detail.append(defender.getName() + "died.\n");
-            battle_detail.append(attacker.getName() + "wins.\n");
-            //return attacker home with new experience
-            attacker.addExperience(1);
-            this.moveToHome(attacker);
+            if (defender.getHealth() <= 0) {
+                //System.out.println(defender.getName()+" died. \n"+attacker.getName()+" wins.");
+                next_turn.setEnabled(false);
+                battle_detail.append(defender.getName() + " died.\n");
+                battle_detail.append(attacker.getName() + " wins.\n\n");
+                //return attacker home with new experience
+                attacker.addExperience(1);
+                this.moveToHome(attacker);
 
             //return defender home with its stats put back to the default
-            defender.resetAllParametersToDefault();
-            this.moveToHome(defender);
-            finish();
-            return;
-        }else{
-            //System.out.println(defender.getName()+"managed to escape death.");
-            battle_detail.append(defender.getName()+"managed to escape death.\n");
+                defender.resetAllParametersToDefault();
+                this.moveToHome(defender);
+            } else {
+                //System.out.println(defender.getName()+"managed to escape death.");
+                battle_detail.append(defender.getName() + " managed to escape death.\n\n");
+            }
+            turn++;// turn increases by one every loop iteration after attacker and defender are set
         }
-        turn++;// turn increases by one every loop iteration after attacker and defender are set
     }
 }
