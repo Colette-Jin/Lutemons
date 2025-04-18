@@ -17,6 +17,7 @@ public abstract class Lutemon {
         this.attack = attack;
         this.defence = defence;
         this.maxHealth = maxHealth;
+        this.health = maxHealth;
         this.id = ++idCount;
         this.experience = 0;
     }
