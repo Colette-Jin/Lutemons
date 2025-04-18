@@ -74,7 +74,8 @@ public abstract class Lutemon {
 
     public void attack(Lutemon lutemon){
         int base_attack = attack;
-        int damage = (int) (base_attack + Math.random() * 3);
+        int exp = experience;
+        int damage = (int) (base_attack + Math.random() * 3+exp);
         //Randomness in battles
         lutemon.defense(damage);
     }

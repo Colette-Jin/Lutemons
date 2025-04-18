@@ -28,7 +28,7 @@ public class Storage {
     }
 
 //    public Lutemon getLutemon(Lutemon lutemon) {
-//        return lutemonMap.get(lutemon);
+//        return lutemonMap.keySet();
 //    }
 
     public List<Lutemon> listLutemons() {
@@ -54,6 +54,7 @@ public class Storage {
     public void removeLutemon(Lutemon lutemon) {
         lutemonMap.remove(lutemon);
     }
+
 }
 
 

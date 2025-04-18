@@ -21,7 +21,7 @@ import java.util.List;
 
 public class BattleField extends AppCompatActivity implements Battle {
     private final Storage storage;
-    int turn = 1;
+    int turn;
     private RecyclerView recyclerArena;
     private TextView battle_detail;
     private storageAdapter adapter;
