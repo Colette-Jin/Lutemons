@@ -51,9 +51,9 @@ public class Storage {
         return lutemonList;
     }//list of lutemons at certain location
 
-    public void removeLutemon(Lutemon lutemon) {
-        lutemonMap.remove(lutemon);
-    }
+//    public void removeLutemon(Lutemon lutemon) {
+//        lutemonMap.remove(lutemon);
+//    }
 
 }
 

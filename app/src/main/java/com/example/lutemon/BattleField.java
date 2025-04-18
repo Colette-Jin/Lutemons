@@ -57,6 +57,7 @@ public class BattleField extends AppCompatActivity implements Battle {
     private void setupRecyclerView() {
         adapter = new storageAdapter(new ArrayList<>(),this);
         recyclerArena.setAdapter(adapter);
+        adapter.updateItems(lutemons_in_arena);
     }
 
     private void setupButtonListeners() {
