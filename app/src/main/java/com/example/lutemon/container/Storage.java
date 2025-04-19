@@ -1,6 +1,13 @@
 package com.example.lutemon.container;
 
+import android.content.Context;
+
 import com.example.lutemon.mons.Lutemon;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +15,7 @@ import java.util.Map;
 
 public class Storage {
     private static Storage instance;
-    private final Map<Lutemon,String> lutemonMap;
+    private Map<Lutemon,String> lutemonMap;
 
 
     private Storage() {
@@ -46,6 +53,31 @@ public class Storage {
         }
         return lutemonList;
     }//list of lutemons at certain location
+
+    public void saveLutemons(Context context){
+        try{
+            FileOutputStream fos = context.openFileOutput("lutemons.data",Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(lutemonMap);
+            oos.close();
+            fos.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void loadLutemons(Context context){
+        try{
+            FileInputStream fis = context.openFileInput("lutemons.data");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            lutemonMap = (Map<Lutemon, String>) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (Exception e) {
+            lutemonMap = new HashMap<>();
+            e.printStackTrace();
+        }
+    }
 }
 
 

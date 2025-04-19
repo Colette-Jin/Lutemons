@@ -1,6 +1,8 @@
 package com.example.lutemon.mons;
 
-public abstract class Lutemon {
+import java.io.Serializable;
+
+public abstract class Lutemon implements Serializable {
     protected String name;
     protected String color;
     protected int attack;
