@@ -47,7 +47,9 @@ This Android project allows users to create and collect Lutemons, each with uniq
 ### Classes Included in the Diagram:
 - `Lutemon`: Represents a creature with attributes such as attack, defense, color, health, image, and experience. The class includes methods for attacking and defending. Subclasses override the `reset()` method with different default values.
 - `Storage`: Handles saving and loading of Lutemons. All Lutemons and their locations are managed in this class.
+- `Home`: Creates lutemons with selected color and an input as the name.
 - `BattleField`: Contains logic for battling two Lutemons.
+- `Train`: Trains selected lutemons.
 
 ## 🚀 How to Run the App
 
