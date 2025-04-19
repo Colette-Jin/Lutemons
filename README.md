@@ -33,7 +33,7 @@ This android project allows users to create and collect lutemons with different 
 | Jie Chang   | app structure, Battle, Training, Storage, data storage&loading    |
 
 ## 🧱 Class Diagram
-![Class Diagram](.Lutemon_classes.png)
+![Class Diagram](./Lutemon_classes.png)
 
 ## 🧱 Classes included in the diagram:
 - `Lutemon`: Represents a Lutemon with attributes like attack, defense, and experience.
