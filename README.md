@@ -11,14 +11,16 @@ This android project allows users to create and collect lutemons with different 
 ## 🧑‍🤝‍🧑 Team Members & Responsibilities
 | Name        | Role/Responsibility                                               |
 |-------------|-------------------------------------------------------------------|
-| Iro Blanke  | Lutemon classes, Home, Create Lutemons, corresponding UI design   |
+| Iro Blanke  | Lutemon classes, Home, MainActivity, Create Lutemons, UI design   |
 | Jie Chang   | app structure, Battle, Training, Storage, data storage&loading    |
 
 ## 🧱 Class Diagram
-_(Insert a UML diagram image here, excluding UI classes like Activities)_
+![Class Diagram](./Lutemon_classes.png)
 
-Example:
-![Class Diagram](./diagrams/class-diagram.png)
+## 🧱 Classes included in the diagram:
+- `Lutemon`: Represents a Lutemon with attributes like attack, defense, and experience.
+- `Storage`: Handles storing and loading of Lutemons.
+- `Battle`: Contains logic for battling two Lutemons.
 
 ## 🚀 How to Run
 1. Clone the repository:
