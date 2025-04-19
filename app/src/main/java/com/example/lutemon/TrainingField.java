@@ -77,6 +77,6 @@ public class TrainingField extends AppCompatActivity implements Train {
     @Override
     public void train(Lutemon lutemon) {
         lutemon.addExperience(1);
-        train_log.append(lutemon.getName()+"s' EXP+1\n");
+        train_log.append(lutemon.getName()+"'s EXP+1\n");
     }// exp++ and display log
 }

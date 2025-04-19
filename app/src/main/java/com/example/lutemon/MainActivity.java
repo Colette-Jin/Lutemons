@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.home);
 
         storage = Storage.getInstance();
-        storage.loadLutemons(this);
+        storage.loadLutemons(this);//load lutemon file
 
         recyclerView = findViewById(R.id.home_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.updateList(new ArrayList<>(storage.getLutemons()));
     }
 
+    //save lutemons automatically
     protected void onPause(){
         super.onPause();
         storage.saveLutemons(this);
