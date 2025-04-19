@@ -36,12 +36,13 @@ This android project allows users to create and collect lutemons with different 
 ![Class Diagram](./Lutemon_classes.png)
 
 ## 🧱 Classes included in the diagram:
-- `Lutemon`: Represents a Lutemon with attributes like attack, defense, and experience.
-- `Storage`: Handles storing and loading of Lutemons.
-- `Battle`: Contains logic for battling two Lutemons.
+- `Lutemon`: Represents a Lutemon with attributes like attack, defense, color, health, image and experience. Attack and Defense methods are declared in this class. Child classes override reset methods with different default values. 
+- `Storage`: Handles storing and loading of Lutemons. All lutemons and their locations are managed in this class.
+- `BattleField`: Contains logic for battling two Lutemons.
 
 ## 🚀 How to Run
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/project-name.git
-
+2. Sync Gradle and run app
+3. Lutemons will be loaded.
