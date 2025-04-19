@@ -41,10 +41,13 @@ public class MainActivity extends AppCompatActivity {
         Button create_btn = findViewById(R.id.create_btn);
         Button train_btn = findViewById(R.id.train_btn);
         Button battle_btn= findViewById(R.id.battle_btn);
+        //redirect to create lutemon page
         create_btn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CreateLutemonActivity.class);
             startActivity(intent);
         });
+        //move selected lutemons to training area
+        //redirect to training page
         train_btn.setOnClickListener(v -> {
             List<Lutemon> selectedmons = adapter.getSelectedmons();
             if(selectedmons.isEmpty()){
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, TrainingField.class);
             startActivity(intent);
         });
+        //move selected lutemons to battle field
+        //redirect to battle page
         battle_btn.setOnClickListener(v -> {
             List<Lutemon> selectedmons = adapter.getSelectedmons();
             if (selectedmons.size() != 2) {

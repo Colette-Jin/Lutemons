@@ -1,8 +1,10 @@
 package com.example.lutemon.mons;
 
+import com.example.lutemon.R;
+
 public class Whitemon extends Lutemon{
     public Whitemon(String name){
-        super(name,"white", 5, 4, 20);
+        super(name,"white", 5, 4, 20, R.drawable.white);
     }
 
     @Override

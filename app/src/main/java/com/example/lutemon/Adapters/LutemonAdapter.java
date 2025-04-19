@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,20 +27,15 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
         this.lutemons = lutemons;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void updateList(List<Lutemon> newList) {
-        lutemons.clear();
-        lutemons.addAll(newList);
-        notifyDataSetChanged();
-    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameText;
         public TextView colorText;
         public TextView details;
-        CheckBox checkBox;
-
+        public CheckBox checkBox;
+        public ImageView imageview;
         public ViewHolder(View itemView) {
             super(itemView);
+            imageview = itemView.findViewById(R.id.imageView2);
             nameText = itemView.findViewById(R.id.name);
             colorText = itemView.findViewById(R.id.color);
             details = itemView.findViewById(R.id.details);
@@ -61,7 +57,9 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
         holder.nameText.setText(lutemon.getName());
         holder.colorText.setText(lutemon.getColor());
         holder.details.setText(lutemon.getDetails());
-        //status of checkboxes
+        holder.imageview.setImageResource(lutemon.getImageID());
+
+        //status of checkboxes, add lutemons checked to List selectedmons
         holder.checkBox.setOnClickListener(null);
         holder.checkBox.setChecked(selectedmons.contains(lutemon));
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -75,6 +73,13 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateList(List<Lutemon> newList) {
+        lutemons.clear();
+        lutemons.addAll(newList);
+        notifyDataSetChanged();
+    }//update lutemons and values of their attributes
+
     @Override
     public int getItemCount() {
         return lutemons.size();
@@ -82,6 +87,6 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.ViewHold
 
     public List<Lutemon> getSelectedmons(){
         return selectedmons;
-    }
+    }//get checked lutemons
 }
 

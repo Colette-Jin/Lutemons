@@ -10,8 +10,9 @@ public abstract class Lutemon {
     protected int id;
     protected int experience;
     static int idCount;
+    private int imageID;
 
-    public Lutemon(String name,String color,int attack,int defence,int maxHealth){
+    public Lutemon(String name,String color,int attack,int defence,int maxHealth,int imageID){
         this.name = name;
         this.color = color;
         this.attack = attack;
@@ -20,6 +21,7 @@ public abstract class Lutemon {
         this.health = maxHealth;
         this.id = ++idCount;
         this.experience = 0;
+        this.imageID = imageID;
     }
 
     public String getName(){
@@ -40,34 +42,19 @@ public abstract class Lutemon {
     public int getMaxHealth() {
         return maxHealth;
     }
-
     public int getHealth() { return health; }
     public int getExperience(){return experience;}
 
     public String getColor() {
         return color;
     }
+    public  int getImageID(){return imageID;}
     public static int getNumberOfCreatedLutemons(){
         return idCount;
     }
 
     public abstract void resetHealthToDefault();
-//        switch(color){
-//            case "white":this.health=20;
-//            case "green":this.health=19;
-//            case "pink":this.health=18;
-//            case "orange":this.health=17;
-//            case "black":this.health=16;
-//        }
-
-
     public abstract void resetAllParametersToDefault();
-//        switch(color){
-//            case "white":this.health=20;this.attack=5;this.defence=4;this.experience=0;
-//            case "green":this.health=19;this.attack=6;this.defence=3;this.experience=0;
-//            case "pink":this.health=18;this.attack=7;this.defence=2;this.experience=0;
-//            case "orange":this.health=17;this.attack=8;this.defence=1;this.experience=0;
-//            case "black":this.health=16;this.attack=9;this.defence=0;this.experience=0;
 
     public void defense(int attack){
         health = health-attack;
@@ -83,11 +70,8 @@ public abstract class Lutemon {
 
     public void addExperience(int additionalExperiencePoints){
         this.experience+=additionalExperiencePoints;
+    }// called when lutemons are trained or win a battle
 
-        // When experience increases, attack power also increases
-        //already implement in attack()
-        //this.attack+=additionalExperiencePoints;
-    }
     public String getDetails(){
         int atk = this.getAttack();
         int def = this.getDefence();
@@ -95,5 +79,5 @@ public abstract class Lutemon {
         int maxhealth = this.getMaxHealth();
         int exp = this.getExperience();
         return "ATK: "+atk+" DEF: "+def+" HP: "+health+"/"+maxhealth+" EXP: "+exp;
-    }
+    }// called in recyclerView
 }

@@ -12,9 +12,9 @@ public class Storage {
 
 
     private Storage() {
-        // lutemons list and current location:Home,battlefield,trainingarea
         this.lutemonMap = new HashMap<>();
-    }
+    }// lutemons list and current location:Home,battlefield,trainingarea
+
     public static synchronized Storage getInstance() {
         if (instance == null) {
             instance = new Storage();
@@ -24,12 +24,8 @@ public class Storage {
 
     public void addLutemon(Lutemon lutemon) {
         lutemonMap.put(lutemon, "Home");
-        //default location: Home
-    }
+    }//default location: Home
 
-//    public Lutemon getLutemon(Lutemon lutemon) {
-//        return lutemonMap.keySet();
-//    }
 
     public List<Lutemon> getLutemons() {
         return new ArrayList<>(lutemonMap.keySet());
@@ -50,11 +46,6 @@ public class Storage {
         }
         return lutemonList;
     }//list of lutemons at certain location
-
-//    public void removeLutemon(Lutemon lutemon) {
-//        lutemonMap.remove(lutemon);
-//    }
-
 }
 
 

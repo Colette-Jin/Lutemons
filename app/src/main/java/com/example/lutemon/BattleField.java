@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BattleField extends AppCompatActivity implements Battle {
-    private final Storage storage;
+    private Storage storage;
     int turn=1;
     private RecyclerView recyclerArena;
     private TextView battle_detail;
@@ -28,19 +28,18 @@ public class BattleField extends AppCompatActivity implements Battle {
     private Lutemon lutemon1;
     private Lutemon lutemon2;
     private Button next_turn;
-    public BattleField() {
-        this.storage = Storage.getInstance();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.battle);
+        this.storage = Storage.getInstance();
         recyclerArena = findViewById(R.id.recycler_arena);
-
         recyclerArena.setLayoutManager(new LinearLayoutManager(this));
         battle_detail = findViewById(R.id.textView);
+
+        //get 2 lutemons in battle field
         lutemons_in_arena = storage.getLutemonsAtLocation("battlefield");
         if (lutemons_in_arena == null || lutemons_in_arena.size() != 2) {
             Toast.makeText(this, "please select 2 Lutemons", Toast.LENGTH_LONG).show();
@@ -49,6 +48,7 @@ public class BattleField extends AppCompatActivity implements Battle {
         }
         lutemon1 = lutemons_in_arena.get(0);
         lutemon2 = lutemons_in_arena.get(1);
+
         battle_detail.setText("");//initialize battle log
         setupButtonListeners();
         setupRecyclerView();
@@ -65,6 +65,7 @@ public class BattleField extends AppCompatActivity implements Battle {
         next_turn = findViewById(R.id.turn_button);
         Button end_b = findViewById(R.id.button_end);
 
+        //start the battle only once, then next turn button enabled
         start_b.setOnClickListener(v -> {
             Toast.makeText(this, "Show time!", Toast.LENGTH_SHORT).show();
             fight();
@@ -72,12 +73,11 @@ public class BattleField extends AppCompatActivity implements Battle {
             start_b.setEnabled(false);
             adapter.updateList(lutemons_in_arena);
         });
-
         next_turn.setOnClickListener(v -> {
             Toast.makeText(this, "next turn", Toast.LENGTH_SHORT).show();
             fight();
         });
-
+        // move lutemons back home
         end_b.setOnClickListener(v -> {
             Toast.makeText(this, "Returning", Toast.LENGTH_SHORT).show();
             moveToHome(lutemon1);
@@ -103,8 +103,6 @@ public class BattleField extends AppCompatActivity implements Battle {
             battle_detail.append("Battle is over.\n");
         }
         else {
-
-//        while (true) {
             if (turn % 2 != 0) {//if the turn is odd A attacks
                 attacker = lutemon1;
                 defender = lutemon2;
@@ -112,29 +110,24 @@ public class BattleField extends AppCompatActivity implements Battle {
                 attacker = lutemon2;
                 defender = lutemon1;
             }
+
             //Randomness in battles:Lutemon.attack
-            attacker.attack(defender);//attacker attacks and defender defends
-            // print lutemons stats here ?? How if not in the terminal? I dont know how else to print...
-            //A.getName()+" has "+ A.getHealth()+" healthpoints"
-            //B.getName()+" has "+ B.getHealth()+" healthpoints"
+            attacker.attack(defender);
             battle_detail.append(attacker.getName() + " attacks " + defender.getName() + "\n");
             battle_detail.append(defender.getName() + " has " + defender.getHealth() + " HP left.\n");
             adapter.updateList(lutemons_in_arena);//update data after each attack
 
             if (defender.getHealth() <= 0) {
-                //System.out.println(defender.getName()+" died. \n"+attacker.getName()+" wins.");
                 next_turn.setEnabled(false);
                 battle_detail.append(defender.getName() + " died.\n");
                 battle_detail.append(attacker.getName() + " wins.\n\n");
                 //return attacker home with new experience
                 attacker.addExperience(1);
                 this.moveToHome(attacker);
-
-            //return defender home with its stats put back to the default
+                //return defender home with its status put back to the default
                 defender.resetAllParametersToDefault();
                 this.moveToHome(defender);
             } else {
-                //System.out.println(defender.getName()+"managed to escape death.");
                 battle_detail.append(defender.getName() + " managed to escape death.\n\n");
             }
             turn++;// turn increases by one every loop iteration after attacker and defender are set

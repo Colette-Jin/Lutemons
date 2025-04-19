@@ -26,7 +26,6 @@ public class TrainingField extends AppCompatActivity implements Train {
     private List<Lutemon> lutemons_in_training;
 
 
-
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -35,13 +34,16 @@ public class TrainingField extends AppCompatActivity implements Train {
         recyclerTrain = findViewById(R.id.recyclerView);
         recyclerTrain.setLayoutManager(new LinearLayoutManager(this));
         train_log = findViewById(R.id.textView2);
+
+        //get lutemons in training area
         lutemons_in_training = storage.getLutemonsAtLocation("trainingarea");
         if (lutemons_in_training == null) {
             Toast.makeText(this, "select at least 1 Lutemon", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
-        train_log.setText("");//initialize log
+
+        train_log.setText("");//initialize training log
         setupButtonListeners();
         setupRecyclerView();
     }
@@ -49,12 +51,14 @@ public class TrainingField extends AppCompatActivity implements Train {
     private void setupButtonListeners() {
         Button train_b = findViewById(R.id.train);
         Button end_b = findViewById(R.id.reHome);
+        // train lutemons
         train_b.setOnClickListener(v -> {
             for(Lutemon lutemon:lutemons_in_training){
                 train(lutemon);
             }
             adapter.updateList(lutemons_in_training);
         });
+        // move lutemons back home
         end_b.setOnClickListener(v -> {
             Toast.makeText(this, "Returning", Toast.LENGTH_SHORT).show();
             for(Lutemon lutemon:lutemons_in_training){
@@ -74,5 +78,5 @@ public class TrainingField extends AppCompatActivity implements Train {
     public void train(Lutemon lutemon) {
         lutemon.addExperience(1);
         train_log.append(lutemon.getName()+"s' EXP+1\n");
-    }
+    }// exp++ and display log
 }
